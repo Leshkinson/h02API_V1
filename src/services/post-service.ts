@@ -56,4 +56,9 @@ export class PostService {
             posts.splice(index, 1)
         }
     }
+
+    public testingDelete() {
+        posts.length = 0
+        return posts
+    }
 }

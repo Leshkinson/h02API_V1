@@ -14,6 +14,9 @@ import {isErrorMiddleware} from "../middleware/catch-error";
 
 export const router = Router();
 
+/**Test**/
+router.delete('/testing/all-data', BlogController.testing)
+
 /**Blogs**/
 router.get('/blogs', BlogController.getAllBlogs);
 router.post('/blogs', basicAuthorization, nameValidation, descriptionValidation, websiteUrlValidation, isErrorMiddleware, BlogController.createBlog);

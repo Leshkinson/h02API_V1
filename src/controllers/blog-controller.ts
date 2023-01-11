@@ -1,6 +1,7 @@
 import {Request, Response} from "express";
 import {BlogService} from "../services/blog-service";
 import {Blog} from "../repositories/blogs";
+import {PostService} from "../services/post-service";
 
 export class BlogController {
 
@@ -67,6 +68,20 @@ export class BlogController {
             const {id} = req.params
             const blogService = new BlogService()
             blogService.delete(id)
+            res.sendStatus(204)
+        } catch (error) {
+            if (error instanceof Error) {
+                throw new Error(error.message)
+            }
+        }
+    }
+
+    static testing(req: Request, res: Response) {
+        try {
+            const blogService = new BlogService()
+            const postService = new PostService()
+            blogService.testingDelete()
+            postService.testingDelete()
             res.sendStatus(204)
         } catch (error) {
             if (error instanceof Error) {

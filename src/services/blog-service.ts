@@ -48,4 +48,9 @@ export class BlogService {
             blogs.splice(index, 1);
         }
     }
+
+    public testingDelete() {
+        blogs.length = 0
+        return blogs
+    }
 }
