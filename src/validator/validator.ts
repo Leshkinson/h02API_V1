@@ -1,4 +1,4 @@
-import {body, check, validationResult, CustomValidator} from 'express-validator';
+import {body, validationResult, CustomValidator} from 'express-validator';
 
 export const myValidationResult = validationResult.withDefaults({
     formatter: error => {
@@ -15,6 +15,12 @@ const isWebsiteUrlPattern: CustomValidator = (value: string) => {
         throw new Error()
     }
     return true;
+}
+
+const isBodyIdPattern: CustomValidator = (value) => {
+    if(typeof value !== 'string') {
+        throw new Error()
+    }
 }
 
 export const nameValidation = body('name')
@@ -71,3 +77,7 @@ export const contentDescriptionValidation = body('content')
     .isString()
     .withMessage("Content has incorrect value. (Content isn't string)");
 
+export const blogIdValidation = body('blogId')
+    .trim()
+    .custom(isBodyIdPattern)
+    .withMessage("BlogId has incorrect value. (BlogId doesn't string)");

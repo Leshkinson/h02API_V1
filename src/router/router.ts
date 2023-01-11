@@ -3,6 +3,7 @@ import {BlogController} from "../controllers/blog-controller";
 import {PostController} from "../controllers/post-controller";
 import {basicAuthorization} from "../authrizations/authorization";
 import {
+    blogIdValidation,
     contentDescriptionValidation,
     descriptionValidation,
     nameValidation,
@@ -26,8 +27,8 @@ router.delete('/blogs/:id', basicAuthorization, BlogController.deleteBlog);
 
 /**Posts**/
 router.get('/posts', PostController.getAllPosts);
-router.post('/posts', basicAuthorization, titleValidation, shortDescriptionValidation, contentDescriptionValidation, isErrorMiddleware, PostController.createPost);
+router.post('/posts', basicAuthorization, titleValidation, shortDescriptionValidation, contentDescriptionValidation, blogIdValidation, isErrorMiddleware, PostController.createPost);
 router.get('/posts/:id', PostController.getOnePost);
-router.put('/posts/:id', basicAuthorization, titleValidation, shortDescriptionValidation, contentDescriptionValidation, isErrorMiddleware, PostController.updatePost);
+router.put('/posts/:id', basicAuthorization, titleValidation, shortDescriptionValidation, contentDescriptionValidation, blogIdValidation, isErrorMiddleware, PostController.updatePost);
 router.delete('/posts/:id', basicAuthorization, PostController.deletePost);
 
