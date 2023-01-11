@@ -1,6 +1,5 @@
 import express from "express";
 import bodyParser from "body-parser";
-//import cors from 'cors';
 import { router } from "./router/router"
 import * as dotenv from 'dotenv'
 import {serverConfigService} from "./config/config.service";
@@ -11,8 +10,8 @@ const app = express();
 
 
 app.use(bodyParser.json());
-//app.use(cors);
-app.use('/api', router);
+
+app.use('/', router);
 
 
 const start = () => {
