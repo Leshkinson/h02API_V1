@@ -67,6 +67,7 @@ export class PostController {
             res.sendStatus(204)
         } catch (error) {
             if (error instanceof Error) {
+                res.sendStatus(404)
                 console.log(error.message)
             }
         }

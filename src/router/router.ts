@@ -21,8 +21,8 @@ router.delete('/testing/all-data', BlogController.testing)
 router.get('/blogs', BlogController.getAllBlogs);
 router.post('/blogs', basicAuthorization, nameValidation, descriptionValidation, websiteUrlValidation, isErrorMiddleware, BlogController.createBlog);
 router.get('/blogs/:id', BlogController.getOneBlog);
-router.put('/blogs/:id', basicAuthorization, BlogController.updateBlog);
-router.delete('/blogs/:id', basicAuthorization, nameValidation, descriptionValidation, websiteUrlValidation, isErrorMiddleware, BlogController.deleteBlog);
+router.put('/blogs/:id', basicAuthorization, nameValidation, descriptionValidation, websiteUrlValidation, isErrorMiddleware, BlogController.updateBlog);
+router.delete('/blogs/:id', basicAuthorization, BlogController.deleteBlog);
 
 /**Posts**/
 router.get('/posts', PostController.getAllPosts);

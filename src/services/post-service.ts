@@ -42,8 +42,8 @@ export class PostService {
         const updatePost: Post | undefined = this.find(id)
         if (blog && updatePost) {
             updatePost.title = title;
-            updatePost.shortDescription = title;
-            updatePost.content = title;
+            updatePost.shortDescription = shortDescription;
+            updatePost.content = content;
 
             return updatePost
         }
