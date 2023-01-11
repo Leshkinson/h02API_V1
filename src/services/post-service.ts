@@ -50,7 +50,7 @@ export class PostService {
     }
 
     public delete(id: string) {
-        const deletePost: Post | undefined = this.find(id)
+        const deletePost: Post = this.find(id)
         if (deletePost) {
             const index = posts.indexOf(deletePost)
             posts.splice(index, 1)

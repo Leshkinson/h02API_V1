@@ -42,7 +42,7 @@ export class BlogService {
     }
 
     public delete(id: string) {
-        const deleteBlog: Blog | undefined = this.find(id);
+        const deleteBlog: Blog = this.find(id);
         if (deleteBlog) {
             const index = blogs.indexOf(deleteBlog);
             blogs.splice(index, 1);
