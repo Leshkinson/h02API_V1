@@ -46,6 +46,8 @@ export class BlogService {
         if (deleteBlog) {
             const index = blogs.indexOf(deleteBlog);
             blogs.splice(index, 1);
+
+            return;
         }
         throw new Error()
     }

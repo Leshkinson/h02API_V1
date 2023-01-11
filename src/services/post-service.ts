@@ -54,6 +54,8 @@ export class PostService {
         if (deletePost) {
             const index = posts.indexOf(deletePost)
             posts.splice(index, 1)
+
+            return;
         }
         throw new Error()
     }
