@@ -39,8 +39,10 @@ export class BlogController {
             if (findBlog) {
                 res.status(200).json(findBlog)
             }
+            //res.sendStatus(404)
         } catch (error) {
             if (error instanceof Error) {
+                res.sendStatus(404)
                 throw new Error(error.message)
             }
         }
@@ -55,9 +57,10 @@ export class BlogController {
             if (updateBlog) {
                 res.sendStatus(204)
             }
-
+            // res.sendStatus(404)
         } catch (error) {
             if (error instanceof Error) {
+                res.sendStatus(404)
                 throw new Error(error.message)
             }
         }
@@ -71,7 +74,6 @@ export class BlogController {
             res.sendStatus(204)
         } catch (error) {
             if (error instanceof Error) {
-                res.sendStatus(404)
                 throw new Error(error.message)
             }
         }
