@@ -74,6 +74,7 @@ export class BlogController {
             res.sendStatus(204)
         } catch (error) {
             if (error instanceof Error) {
+                res.sendStatus(404)
                 throw new Error(error.message)
             }
         }

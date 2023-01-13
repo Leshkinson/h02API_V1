@@ -87,4 +87,4 @@ export const blogIdValidation = body('blogId')
     .withMessage("BlogId has incorrect value. (BlogId doesn't string)");
 
 export const blogValidation = [nameValidation, descriptionValidation, websiteUrlValidation];
-export const postValidation = [titleValidation, shortDescriptionValidation, shortDescriptionValidation, blogIdValidation]
+export const postValidation = [titleValidation, shortDescriptionValidation, shortDescriptionValidation, contentDescriptionValidation, blogIdValidation]
