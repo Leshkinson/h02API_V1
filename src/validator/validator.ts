@@ -14,13 +14,15 @@ const isWebsiteUrlPattern: CustomValidator = (value: string) => {
     if (!patternURL.test(value)) {
         throw new Error()
     }
+
     return true;
 }
 
 const isBodyIdPattern: CustomValidator = (value) => {
-    if(typeof value !== 'string') {
+    if (typeof value !== 'string') {
         throw new Error()
     }
+
     return true;
 }
 
@@ -83,3 +85,6 @@ export const blogIdValidation = body('blogId')
     // .isString()
     .custom(isBodyIdPattern)
     .withMessage("BlogId has incorrect value. (BlogId doesn't string)");
+
+export const blogValidation = [nameValidation, descriptionValidation, websiteUrlValidation];
+export const postValidation = [titleValidation, shortDescriptionValidation, shortDescriptionValidation, blogIdValidation]

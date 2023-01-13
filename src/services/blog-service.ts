@@ -6,7 +6,7 @@ export class BlogService {
         return blogs;
     }
 
-    public create(name: string, description: string, websiteUrl: string) {
+    public create(name: string, description: string, websiteUrl: string): Blog {
         const newBlog: Blog = {
             id: String(+(new Date)),
             name,
@@ -18,19 +18,20 @@ export class BlogService {
         return newBlog;
     }
 
-    public find(id: string) {
+    public find(id: string): Blog {
         const blog: Blog | undefined = blogs.find(blog => blog.id === id);
         if (!blog) throw new Error('not find blog');
 
         return blog;
     }
 
-    public getOne(id: string) {
+    public getOne(id: string): Blog | undefined {
         const findBlog: Blog | undefined = this.find(id);
         if (findBlog) return findBlog;
+        throw new Error();
     }
 
-    public update(id: string, name: string, description: string, websiteUrl: string) {
+    public update(id: string, name: string, description: string, websiteUrl: string): Blog | undefined {
         const updateBlog: Blog = this.find(id);
         if (updateBlog) {
             updateBlog.name = name;
@@ -39,6 +40,7 @@ export class BlogService {
 
             return updateBlog;
         }
+        throw new Error()
     }
 
     public delete(id: string) {

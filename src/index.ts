@@ -1,18 +1,15 @@
 import express from "express";
+import * as dotenv from 'dotenv';
 import bodyParser from "body-parser";
-import { router } from "./router/router"
-import * as dotenv from 'dotenv'
+import {router} from "./router/router";
 import {serverConfigService} from "./config/config.service";
+
 dotenv.config()
 
 const app = express();
 
-
-
 app.use(bodyParser.json());
-
 app.use('/', router);
-
 
 const start = () => {
     try {

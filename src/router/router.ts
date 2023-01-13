@@ -2,15 +2,7 @@ import {Router} from "express";
 import {BlogController} from "../controllers/blog-controller";
 import {PostController} from "../controllers/post-controller";
 import {basicAuthorization} from "../authrizations/authorization";
-import {
-    blogIdValidation,
-    contentDescriptionValidation,
-    descriptionValidation,
-    nameValidation,
-    shortDescriptionValidation,
-    titleValidation,
-    websiteUrlValidation
-} from "../validator/validator";
+import {blogValidation, postValidation} from "../validator/validator";
 import {isErrorMiddleware} from "../middleware/catch-error";
 
 export const router = Router();
@@ -20,15 +12,15 @@ router.delete('/testing/all-data', BlogController.testing)
 
 /**Blogs**/
 router.get('/blogs', BlogController.getAllBlogs);
-router.post('/blogs', basicAuthorization, nameValidation, descriptionValidation, websiteUrlValidation, isErrorMiddleware, BlogController.createBlog);
+router.post('/blogs', basicAuthorization, blogValidation, isErrorMiddleware, BlogController.createBlog);
 router.get('/blogs/:id', BlogController.getOneBlog);
-router.put('/blogs/:id', basicAuthorization, nameValidation, descriptionValidation, websiteUrlValidation, isErrorMiddleware, BlogController.updateBlog);
+router.put('/blogs/:id', basicAuthorization, blogValidation, isErrorMiddleware, BlogController.updateBlog);
 router.delete('/blogs/:id', basicAuthorization, BlogController.deleteBlog);
 
 /**Posts**/
 router.get('/posts', PostController.getAllPosts);
-router.post('/posts', basicAuthorization, titleValidation, shortDescriptionValidation, contentDescriptionValidation, blogIdValidation, isErrorMiddleware, PostController.createPost);
+router.post('/posts', basicAuthorization, postValidation, isErrorMiddleware, PostController.createPost);
 router.get('/posts/:id', PostController.getOnePost);
-router.put('/posts/:id', basicAuthorization, titleValidation, shortDescriptionValidation, contentDescriptionValidation, blogIdValidation, isErrorMiddleware, PostController.updatePost);
+router.put('/posts/:id', basicAuthorization, postValidation, isErrorMiddleware, PostController.updatePost);
 router.delete('/posts/:id', basicAuthorization, PostController.deletePost);
 
