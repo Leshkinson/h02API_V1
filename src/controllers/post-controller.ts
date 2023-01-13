@@ -33,11 +33,10 @@ export class PostController {
             const {id} = req.params
             const postService = new PostService()
             const findPost: Post | undefined = postService.getOne(id)
-            if (findPost) {
-                res.status(200).json(findPost)
-            }
+            if (findPost) res.status(200).json(findPost)
         } catch (error) {
             if (error instanceof Error) {
+                res.sendStatus(404)
                 console.log(error.message)
             }
         }
@@ -49,11 +48,10 @@ export class PostController {
             const {title, shortDescription, content, blogId} = req.body
             const postService = new PostService()
             const updatePost: Post | undefined = postService.update(id, title, shortDescription, content, blogId)
-            if (updatePost) {
-                res.sendStatus(204)
-            }
+            if (updatePost) res.sendStatus(204)
         } catch (error) {
             if (error instanceof Error) {
+                res.sendStatus(404)
                 console.log(error.message)
             }
         }
@@ -72,6 +70,4 @@ export class PostController {
             }
         }
     }
-
-
 }
