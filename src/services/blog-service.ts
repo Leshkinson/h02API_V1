@@ -20,7 +20,7 @@ export class BlogService {
 
     public find(id: string): Blog {
         const blog: Blog | undefined = blogs.find(blog => blog.id === id);
-        if (!blog) throw new Error('not find blog');
+        if (!blog) throw new Error();
 
         return blog;
     }

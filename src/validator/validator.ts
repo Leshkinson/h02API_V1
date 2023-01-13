@@ -1,4 +1,5 @@
 import {body, validationResult, CustomValidator} from 'express-validator';
+import {BlogService} from "../services/blog-service";
 
 export const myValidationResult = validationResult.withDefaults({
     formatter: error => {
@@ -19,7 +20,9 @@ const isWebsiteUrlPattern: CustomValidator = (value: string) => {
 }
 
 const isBodyIdPattern: CustomValidator = (value) => {
-    if (typeof value !== 'string') {
+    const blogService = new BlogService()
+    const blog = blogService.find(value)
+    if (!blog) {
         throw new Error()
     }
 
@@ -82,9 +85,10 @@ export const contentDescriptionValidation = body('content')
 
 export const blogIdValidation = body('blogId')
     .trim()
-    // .isString()
+    .isString()
+    .withMessage("BlogId has incorrect value. (BlogId doesn't string)")
     .custom(isBodyIdPattern)
-    .withMessage("BlogId has incorrect value. (BlogId doesn't string)");
+    .withMessage("BlogId has incorrect value. (BlogId not found");
 
 export const blogValidation = [nameValidation, descriptionValidation, websiteUrlValidation];
 export const postValidation = [titleValidation, shortDescriptionValidation, shortDescriptionValidation, contentDescriptionValidation, blogIdValidation]
