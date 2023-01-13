@@ -1,5 +1,5 @@
-import {body, validationResult, CustomValidator} from 'express-validator';
 import {BlogService} from "../services/blog-service";
+import {body, validationResult, CustomValidator} from 'express-validator';
 
 export const myValidationResult = validationResult.withDefaults({
     formatter: error => {

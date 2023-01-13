@@ -1,5 +1,5 @@
-import {myValidationResult} from "../validator/validator.js";
 import {NextFunction, Request, Response} from "express";
+import {myValidationResult} from "../validator/validator.js";
 
 export const isErrorMiddleware = (req: Request, res: Response, next: NextFunction) => {
     const errors = myValidationResult(req);

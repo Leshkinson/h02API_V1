@@ -43,7 +43,7 @@ export class BlogService {
         throw new Error()
     }
 
-    public delete(id: string) {
+    public delete(id: string): void {
         const deleteBlog: Blog = this.find(id);
         if (deleteBlog) {
             const index = blogs.indexOf(deleteBlog);
@@ -54,8 +54,9 @@ export class BlogService {
         throw new Error()
     }
 
-    public testingDelete() {
-        blogs.length = 0
-        return blogs
+    public testingDelete(): Blog[] {
+        blogs.length = 0;
+
+        return blogs;
     }
 }

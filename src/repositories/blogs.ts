@@ -1,9 +1,10 @@
-export interface Blog{
+export interface Blog {
     id: string;
     name: string;
     description: string;
     websiteUrl: string;
 }
+
 export const blogs: Array<Blog> = [
     {
         id: "1",

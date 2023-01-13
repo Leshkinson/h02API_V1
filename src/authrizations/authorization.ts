@@ -15,7 +15,7 @@ export const basicAuthorization = (req: Request, res: Response, next: NextFuncti
     }
 
     const encoded = authorization.substring(6);
-    const decoded = Buffer.from(encoded, 'base64').toString('ascii')
+    const decoded = Buffer.from(encoded, 'base64').toString('ascii');
     const [login, password] = decoded.split(':');
     if (login !== LOGIN || password !== PASSWORD) {
         res.sendStatus(401)
